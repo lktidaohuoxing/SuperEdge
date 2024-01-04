@@ -1,3 +1,3 @@
 # SuperEdge
 SuperEdge is a self-supervised edge detection method
-![250](./Image/method/overview.pdf)
+![500](./Image/method_overview.pdf)
