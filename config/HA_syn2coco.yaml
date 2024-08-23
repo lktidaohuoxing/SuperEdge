@@ -1,0 +1,42 @@
+data:
+    name: 'coco'
+    resize: [240,320]
+    #v1
+    # src_image_path: './data/coco/images/train2017/'
+    # dst_label_path: './data/coco/labels_v1/train2017/'
+    # dst_image_path: './data/coco/images_v1/train2017/'
+    src_image_path: './data/coco/images/test2017/'
+    dst_label_path: './data/coco/labels_v1/test2017/'
+    dst_image_path: './data/coco/images_v1/test2017/'
+
+
+    homography_adaptation:
+        num: 100
+        aggregation: 'sum'
+        filter_counts: 0
+        valid_border_margin: 3
+        homographies:
+            translation: true
+            rotation: true
+            scaling: true
+            perspective: true
+            scaling_amplitude: 0.2
+            perspective_amplitude_x: 0.2
+            perspective_amplitude_y: 0.2
+            allow_artifacts: true
+            patch_ratio: 0.85
+            max_angle: 1.57
+model:
+    name: 'superedgev1'
+    using_bn: true
+    grid_size: 8
+    det_thresh: 0.015 #0.015
+    nms: 4
+    topk: 0
+    pretrained_model: './export/syn/superedge_v1_0.316_86.pth'
+    backbone:
+        backbone_type: 'VGG'
+        vgg:
+            channels: [64,64,64,64,128,128,128,128]
+    det_head: #detector head
+        feat_in_dim: 128
